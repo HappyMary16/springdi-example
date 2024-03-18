@@ -1,0 +1,6 @@
+POST http://localhost:8080/cars
+Content-Type: application/json
+
+{
+  "carNumber": "AA1111AA"
+}
