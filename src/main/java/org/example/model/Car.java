@@ -4,8 +4,11 @@ import java.time.Instant;
 
 public class Car {
 
-    private final String carNumber;
-    private final Instant parkingTime;
+    private String carNumber;
+    private Instant parkingTime;
+
+    public Car() {
+    }
 
     public Car(String carNumber, Instant parkingTime) {
         this.carNumber = carNumber;
@@ -18,5 +21,13 @@ public class Car {
 
     public Instant getParkingTime() {
         return parkingTime;
+    }
+
+    public void setCarNumber(String carNumber) {
+        this.carNumber = carNumber;
+    }
+
+    public void setParkingTime(Instant parkingTime) {
+        this.parkingTime = parkingTime;
     }
 }

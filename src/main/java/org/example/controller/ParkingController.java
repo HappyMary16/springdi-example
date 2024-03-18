@@ -5,6 +5,7 @@ import org.example.service.ParkingService;
 import org.example.service.StatisticService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -45,7 +46,7 @@ public class ParkingController {
      * false - якщо на парковці не було місця для автомобіля
      */
     @PostMapping ("/cars")
-    boolean parkCar(Car car) {
+    boolean parkCar(@RequestBody Car car) {
         return parkingService.parkCar(car);
     }
 
