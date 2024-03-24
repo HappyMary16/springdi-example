@@ -3,6 +3,7 @@ package org.example.controller;
 import org.example.model.Car;
 import org.example.service.ParkingService;
 import org.example.service.StatisticService;
+import org.springframework.context.ApplicationContext;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -17,15 +18,21 @@ public class ParkingController {
     private final ParkingService parkingService;
     private final StatisticService statisticService;
 
+    private final ApplicationContext applicationContext;
+
     /**
      * Конструктор класу.
      *
      * @param parkingService
      * @param statisticService
+     * @param applicationContext
      */
-    public ParkingController(ParkingService parkingService, StatisticService statisticService) {
+    public ParkingController(ParkingService parkingService,
+                             StatisticService statisticService,
+                             ApplicationContext applicationContext) {
         this.parkingService = parkingService;
         this.statisticService = statisticService;
+        this.applicationContext = applicationContext;
     }
 
     /**
@@ -64,5 +71,10 @@ public class ParkingController {
     @GetMapping("/amount-of-cars")
     int getAmountOfCars() {
         return statisticService.getAmountOfCars();
+    }
+
+    @GetMapping("/bean-count-in-application-context")
+    int getBeansCountInApplicationContext() {
+        return applicationContext.getBeanDefinitionCount();
     }
 }
